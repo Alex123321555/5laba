@@ -1,0 +1,50 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+// Дана целочисленная матрица. Найти минимум из сумм элементов строк
+namespace Лабораторная_работа_5__Гильгенберг_Илья_2МО
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Ввод матрицы и присвоение начальных значений сумме и минимуму
+            Console.WriteLine("Введите кол - во строк");
+            int n = int.Parse(Console.ReadLine());
+            Console.WriteLine("Введите кол - во столбцов");
+            int m = int.Parse(Console.ReadLine());
+            int[,] array = new int[n, m];
+            int min = int.MaxValue;
+            int sum = 0;
+
+            // Цикл обработки матрицы, ввод элементов матрицы 
+            Console.WriteLine("Введите элементы матрицы");
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < m; j++)
+                {
+                    string str = Console.ReadLine();
+                    array[i, j] = int.Parse(str);
+                }
+            }
+            // Нахождение минимальной суммы строки в матрице
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < m; j++)
+                {
+                    sum += array[i, j];
+                }
+                if (sum < min)
+                {
+                    min = sum;
+                }
+                Console.WriteLine("Сумма строки = " + sum);
+                sum = 0;
+            }
+            Console.WriteLine("Минимум = " + min);
+            Console.ReadKey();
+        }
+    }
+}
